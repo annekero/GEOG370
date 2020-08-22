@@ -8,18 +8,79 @@
 <body>
     <h1>In this project I learned how to display images in different projections</h1>
     
-    <h2 style="color:red">Describe in your own words how you displayed the map in different projections using QGIS</h2>
-    <p>You can write a paragraph here</p>
+    <h2 style="color:red">Using the data provided, I opened the world map in QGIS.
+         I then added the Indicatrix Mapper plugin so that I could use Tissot's indicatrix elipses to test the distortion of each map.
+         Once the plugin was added, I changed the projection to various different world projections in order to examine the affect each projection has on the map.
+         While keeping the background color set, I experiemented with adding different colors and patterns to the Tissot's indicatrix circles to see which allowed for the best visual representation of distortion.</p>
     
     <h2>WGS84 Projection</h2>
-    <h3>Some observations</h3>
+    <h3>This projection is accurate around the equator, but distortion is evident at the poles, where the Tissot's indicatrix circles are stretched.
+         As you look farther to the North and South the circles become Ellipses, as the land is made to look much wider than it is in reality.
+          This would be a good map to examine area near the equator, but a poor projection if you are in the arctic.
+    </h3>
     <a href=".//maps/4326.png">
     <img src=".//maps/4326.png" alt="WGS84" width='500px'>
     </a>
+    <h2>Pseudo Mercator</h2>
+    <h3>This projection looks very familiar, as it is commonly used in schools. It's easily recognizable.
+        Along the equation there is very little distortion, and size relationships are relatively normal.
+        However, the Tissot's indicatrix circles at the poles are stretched, indicating serious distortion there.
+        This is evident when looking t the size of Greenland and Antarctica, both of which are actually smaller than the continent of Africa.</h3>
+    <a href="./maps/3857pseudomercator.png">
+    <img src="./maps/3857pseudomercator.png" alt="3857pseudomercator" width='500px'>
+    </a>
     <h2>Aitoff Projection</h2>
-    <h3>Some observations</h3>
+    <h3>The Aitoff Projection utilizes and ellipse rather than a rectangle to display the Earth. 
+        The result is that instead of being most accurate along a line of latitude 
+        like the WGS84 Projection or the Pseudo Mercator Projection it has a mst accurate line of longitude. 
+    It is most accurate along the center line of longitude, which falls over Western Africa and Europe, and becomes more distorted as you look farther to the East and West. </h3>
     <a href=".//maps/54043.png">
     <img src=".//maps/54043.png" alt="Aitoff" width='500px'>
+    </a>
+    <h2>Sphere Winkel 1</h2>
+    <h3>I experimented with using cross-hatched marks as a pattern withing the circles to helpt take a better look at distortion. This map experiences distortion at all edges,
+         with The North, South, East, and West all being stretched in their respective directions.
+          However, the circles are still circular for the most part, indicating that while distance an darea will not always be accurately represented, angles will be fairly accurate. 
+    </h3>
+    <a href="./maps/53018-2.png">
+    <img src="./maps/53018-2.png" alt="SphereWinkel" width='500px'>
+    </a>
+    <h2>World Cylindrical Equal Area</h2>
+    <h3>The middle three rows of Indicatrix circles are very similar in size and shape, but distortion is evident
+        to the North and South, as the circles are flattened. One advantage of this map is that going East and West does
+         not appear to affect the distortion of the map.</h3>
+    <a href="./maps/54034.png">
+    <img src="./maps/54034.png" alt="" width='500px'>
+    </a>
+    <h2>World Equidistant Conic</h2>
+    <h3>This map is most accurate in the northern hemisphere, as evidenced by the serious size increase in the Tissot's Indicatrix circles in the southern hemisphere.
+         This map would be most useful for people living in or near the arctic circle, as that is where the map is most accurate.
+         There is  asection of white space, which may look odd at first glance, but it slightly more accurate because of that white space.
+          The projection following this is the North Pole Azimuthal Eqidistant projection, which coovers that white space, and is less accurate.
+    </h3>
+    <a href="./maps/54027.png">
+    <img src="./maps/54027.png" alt="WorldEquidistantConic" width='500px'>
+    </a>
+    <h2>North Pole Azimuthal Equidistant</h2>
+    <h3>As indicated by its name, this projection is most accurate at the North pole. As a viewer goes further south accuracy is lost.
+         The indicatrix circles are significantly larger near Antarcitca, showig a serious size distortion issue in the southern hemisphere.
+          This projection does not have the missing white space that the World Equidistant Conic map has, and has become slightly more distorted as it stretches to cover that space. 
+    </h3>
+    <a href="./maps/102016.png">
+    <img src="./maps/102016.png" alt="NorthPoleAzimuthalEquidistant" width='500px'>
+    </a>
+    <h2>South Pole Azimuthal Equidistant</h2>
+    <h3>This projection has the opposite effect of the North Pole Azimuthal Equidistant Projection. 
+        It is most accurate at the south pole, and loses accuracy as the viewer looks farther north. This map would be best used by those in the southern hemisphere, particularly those in close proximity to the south pole.
+    </h3>
+    <a href="./maps/102019.png">
+    <img src="./maps/102019.png" alt="SouthPoleAzimuthalEquidistant" width='500px'>
+    </a>
+    <h2>GCS European 1979</h2>
+    <h3> This projection is most accurate at the equator. Size becomes more distorted the farther North and South the viewer chooses to look. The circles do retain their circular shape, indicating that while size is distorted, angles will largely be accurate.
+    </h3>
+    <a href="./maps/37201.png">
+    <img src="./maps/37201.png" alt="GCSEuropean" width='500px'>
     </a>
     <h2 style="color:red">Now, you should <u>add the following projections on your own:</u></h2>
     <h3>EPSG: 3857, 53018, 54034, 54027, 102016, and two additional projections that you choose.</h3>
