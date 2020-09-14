@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaflet Preview</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+   crossorigin=""></script>
+
+   <script src = "./geoJSONS/Bellstreet.geojson"></script>
+   <script src = "./geoJSONS/WorldTradeCenterSeattle.geojson"></script>
+   <script src = "./geoJSONS/pacificPlace.geojson"></script>
+
+<style type="text/css">
+    body {
+       margin: 0;
+       padding: 0;
+    }
+    html, body, #map{
+       width: 100%;
+       height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+      var map = L.map('map').setView([47.608025558019804, -122.33943736619138], 14.0);
+      
+var marker1 = L.marker([47.608025558019804, -122.33943736619138]);
+marker1.bindPopup('This is the center of the image') // YOU CAN CHANGE THE MESSAGE
+ .openPopup();
+//Bell Street marina
+ var markerBell = L.marker([47.61014621, -122.34756947]);
+ markerBell.bindPopup(bellIcon);
+ markerBell.bindPopup('This is Bell Street Marina. it was built in the 1990s and connected piers 64, 65, and 66 to form one large pier numbered 66.') // YOU CAN CHANGE THE MESSAGE
+ .openPopup();
+
+     // L.geoJSON(bellstreet)//.addTo(map)
+     var bellIcon = L.icon({ // notice the L.icon which is a Leaflet object with properties
+     iconUrl: 'data:image/jpeg;base64,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',
+     iconSize: [50,50],
+     popupAnchor: [0,0] // where the icon is located relative to the lat lon of the point.
+     });  
+
+    var customPopup = "Bell Street Marina <br/><img src='https://upload.wikimedia.org/wikipedia/commons/c/c3/102_0716edited.jpg'width='100px'/>";
+       
+       var layerBell =  L.geoJSON(bellstreet, { // a
+       pointToLayer: function (feature, latlng) { // b
+       return L.marker(latlng, {icon: bellIcon});}}) // c
+       .bindPopup(customPopup) // d
+     //  .addTo(map); 
+
+ 
+//World trade center
+ var markerWorld = L.marker([47.61115401, -122.34768391]);
+ markerWorld.bindPopup('This is the World Trade Center Seattle') // YOU CAN CHANGE THE MESSAGE
+ .openPopup();
+
+   var worldTradeIcon = L.icon({ // notice the L.icon which is a Leaflet object with properties
+     iconUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTynb09OPU3Wx79Da7bAIxAF2z3yNoJl6qYCQ&usqp=CAU',
+     iconSize: [50,50],
+     popupAnchor: [0,0] // where the icon is located relative to the lat lon of the point.
+     });  
+
+    var customPopup2 = "World Trade Center Seattle <br/><img src='https://www.portseattle.org/sites/default/files/styles/detailpageimagesize/public/2020-07/WTC_Seattle_flags_18120330_16x9.jpg?itok=Q_siSzf7'width='100px'/>";
+       
+       var layerWorldTrade =  L.geoJSON(worldTrade, { // a
+       pointToLayer: function (feature, latlng) { // b
+       return L.marker(latlng, {icon: worldTradeIcon});}}) // c
+       .bindPopup(customPopup2) // d
+     //  .addTo(map); 
+
+ 
+
+// pacific Place
+ var markerPacific = L.marker([47.61278863, -122.33527064]);
+ markerPacific.bindPopup('This is Pacific Place') // YOU CAN CHANGE THE MESSAGE
+ .openPopup();
+
+ var pacificPlaceIcon = L.icon({ // notice the L.icon which is a Leaflet object with properties
+     iconUrl: 'https://i.pinimg.com/474x/61/e9/59/61e9590e524c07c1cd23d88b549fa564.jpg',
+     iconSize: [50,50],
+     popupAnchor: [0,0] // where the icon is located relative to the lat lon of the point.
+     });  
+
+    var customPopup3 = "Pacific Place Shopping Center <br/><img src='https://media.bizj.us/view/img/2725791/pacific-place*1200xx3008-1692-0-134.jpg'width='100px'/>";
+       
+       var layerPacificPlace =  L.geoJSON(pacificPlace, { // a
+       pointToLayer: function (feature, latlng) { // b
+       return L.marker(latlng, {icon: pacificPlaceIcon});}}) // c
+       .bindPopup(customPopup3) // d
+     //  .addTo(map); 
+
+
+
+      var OSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	  maxZoom: 19,
+	  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      
+      var gisMap = L.tileLayer('file:///C%3A/Users/annekero/Documents/GitHub/GEOG370/HOMEWORK%206/{z}/{x}/{y}.png', {
+        minZoom: 12,
+        maxZoom: 16,
+        tms: false,
+        attribution: 'USGS'
+      })
+
+      var tiles = {
+        "Open Street map": OSM,
+        "Older Map": gisMap
+      }
+      var markers = {
+        "center": marker1,
+        "Bell Street Marina": markerBell,
+        "Bell Street Photos": layerBell,
+        "World Trade Center Seattle": markerWorld,
+        "World Trade center Seattle Images": layerWorldTrade,
+        "Pacific Place": markerPacific,
+        "Pacific place Images": layerPacificPlace,
+      }
+ //     var geoJSONS = {
+ //       "bell Street geoJSON": layerBell,
+ //     }
+
+
+      L.control.layers(tiles, markers).addTo(map);
+  </script>
+</body>
+</html>
